@@ -1,4 +1,4 @@
-import os
+import os, time
 import speech_recognition as sr
 import pytesseract
 import requests
@@ -84,7 +84,10 @@ async def speech2txt(bot, m):
     if m.audio or file_dl_path.lower().endswith('.mp3'):
         os.system(f"ffmpeg -i {file_dl_path} -y temp/file.wav")
     else:
-        os.system(f"ffmpeg -i {file_dl_path} -vn -c:a copy temp/file.wav")
+        os.system(f"ffmpeg -i {file_dl_path} -vn -c:a copy temp/file.m4a")
+        time.sleep(10)
+        os.system("ffmpeg -i temp/file.m4a -c copy temp/file.wav")
+    time.sleep(10)
     with sr.AudioFile("temp/file.wav") as source:
         audio_data = r.record(source)
         try:
