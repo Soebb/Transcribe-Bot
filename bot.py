@@ -85,7 +85,7 @@ async def speech2txt(bot, m):
         os.system(f"ffmpeg -i {file_dl_path} -y temp/file.wav")
     else:
         os.system(f"ffmpeg -i {file_dl_path} -vn temp/file.wav")
-        time.sleep(10)
+        # time.sleep(10)
         #os.system("ffmpeg -i temp/file.m4a -c copy temp/file.wav")
     # time.sleep(10)
     with sr.AudioFile("temp/file.wav") as source:
